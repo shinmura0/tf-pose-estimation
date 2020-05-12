@@ -562,7 +562,7 @@ class TfPoseEstimator:
             self.heatMat.shape[1], self.heatMat.shape[0], self.pafMat.shape[1], self.pafMat.shape[0]))
 
         #t = time.time()
-        #humans = PoseEstimator.estimate_paf(peaks, self.heatMat, self.pafMat)
+        #humans = PoseEstimator.estimate_paf(peaks, self.heatMat, self.pafMat)#
         logger.debug('estimate time=%.5f' % (time.time() - t))
         return self.heatMat
 
