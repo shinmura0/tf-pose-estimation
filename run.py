@@ -56,7 +56,7 @@ if __name__ == '__main__':
     try:
         import matplotlib.pyplot as plt
 
-        fig = plt.figure()
+        fig = plt.figure(figsize=(15,15))
         a = fig.add_subplot(2, 2, 1)
         a.set_title('Result')
         plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
