@@ -413,6 +413,14 @@ class TfPoseEstimator:
         x = {}     ##
         y = {}     ##
         for human in humans:
+            # draw line
+            for pair_order, pair in enumerate(common.CocoPairsRender):
+                if pair[0] not in human.body_parts.keys() or pair[1] not in human.body_parts.keys():
+                    continue
+
+                # npimg = cv2.line(npimg, centers[pair[0]], centers[pair[1]], common.CocoColors[pair_order], 3)
+                cv2.line(npimg, centers[pair[0]], centers[pair[1]], (255,0,0), 3)#common.CocoColors[pair_order]
+
             # draw point
             for i in range(common.CocoPart.Background.value):
                 if i not in human.body_parts.keys():
@@ -423,21 +431,13 @@ class TfPoseEstimator:
                 centers[i] = center
                 x[i] = int(body_part.x * image_w + 0.5)     ##
                 y[i] = int(body_part.y * image_h + 0.5)     ##
-                #cv2.circle(npimg, center, 3, common.CocoColors[i], thickness=3, lineType=8, shift=0)
+                ##cv2.circle(npimg, center, 3, common.CocoColors[i], thickness=3, lineType=8, shift=0)
             cv2.circle(npimg, (x[2], y[2]), 13, (0,255,0), thickness=-1)##right shoulder
             cv2.circle(npimg, (x[3], y[3]), 13, (0,255,255), thickness=-1)##right elbow
             cv2.circle(npimg, (x[4], y[4]), 13, (0,0,255), thickness=-1)##right wrist
             cv2.circle(npimg, (x[5], y[5]), 13, (0,255,0), thickness=-1)##left shoulder
             cv2.circle(npimg, (x[6], y[6]), 13, (0,255,255), thickness=-1)##left elbow
             cv2.circle(npimg, (x[7], y[7]), 13, (0,0,255), thickness=-1)##left wrist
-
-            # draw line
-            for pair_order, pair in enumerate(common.CocoPairsRender):
-                if pair[0] not in human.body_parts.keys() or pair[1] not in human.body_parts.keys():
-                    continue
-
-                # npimg = cv2.line(npimg, centers[pair[0]], centers[pair[1]], common.CocoColors[pair_order], 3)
-                cv2.line(npimg, centers[pair[0]], centers[pair[1]], (255,0,0), 3)#common.CocoColors[pair_order]
 
         return npimg
 
