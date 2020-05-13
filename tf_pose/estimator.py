@@ -424,12 +424,12 @@ class TfPoseEstimator:
                 x[i] = int(body_part.x * image_w + 0.5)     ##
                 y[i] = int(body_part.y * image_h + 0.5)     ##
                 #cv2.circle(npimg, center, 3, common.CocoColors[i], thickness=3, lineType=8, shift=0)
-            cv2.circle(npimg, (y[2], x[2]), 3, (100,100,255), thickness=3, lineType=8, shift=0)##right shoulder
-            cv2.circle(npimg, (y[3], x[3]), 3, (100,255,100), thickness=3, lineType=8, shift=0)##right elbow
-            cv2.circle(npimg, (y[4], x[4]), 3, (255,100,100), thickness=3, lineType=8, shift=0)##right wrist
-            cv2.circle(npimg, (y[5], x[5]), 3, (0,0,255), thickness=3, lineType=8, shift=0)##left shoulder
-            cv2.circle(npimg, (y[6], x[6]), 3, (0,255,0), thickness=3, lineType=8, shift=0)##left elbow
-            cv2.circle(npimg, (y[7], x[7]), 3, (255,0,0), thickness=3, lineType=8, shift=0)##left wrist
+            cv2.circle(npimg, (x[2], y[2]), 13, (100,100,255), thickness=3, lineType=8, shift=0)##right shoulder
+            cv2.circle(npimg, (x[3], y[3]), 13, (100,255,100), thickness=3, lineType=8, shift=0)##right elbow
+            cv2.circle(npimg, (x[4], y[4]), 13, (255,100,100), thickness=3, lineType=8, shift=0)##right wrist
+            cv2.circle(npimg, (x[5], y[5]), 13, (0,0,255), thickness=3, lineType=8, shift=0)##left shoulder
+            cv2.circle(npimg, (x[6], y[6]), 13, (0,255,0), thickness=3, lineType=8, shift=0)##left elbow
+            cv2.circle(npimg, (x[7], y[7]), 13, (255,0,0), thickness=3, lineType=8, shift=0)##left wrist
 
             # draw line
             for pair_order, pair in enumerate(common.CocoPairsRender):
