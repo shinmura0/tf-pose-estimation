@@ -46,24 +46,22 @@ def gui(img, pos):##
 
     #right
     if not pos[2,0] == 0:
-        vari.r_target = np.max([0, (pos[2,0]-pos[0,0])/vari.length])#0-1 r_wr-r_sh
+        vari.r_target = np.min([1, np.max([0, (pos[2,0]-pos[0,0])/vari.length])])#0-1 r_wr-r_sh
     elif not pos[1,0] == 0:
-        vari.r_target = np.max([0, (pos[1,0]-pos[0,0])/vari.length])#r_el-r_sh
+        vari.r_target = np.min([1, np.max([0, (pos[1,0]-pos[0,0])/vari.length])])#r_el-r_sh
 
     #left
     if not pos[5,0] == 0:
-        vari.l_target = np.max([0, (pos[3,0]-pos[5,0])/vari.length])#l_sh-l_wr 
+        vari.l_target = np.min([1, np.max([0, (pos[3,0]-pos[5,0])/vari.length])])#l_sh-l_wr 
     elif not pos[4,0] == 0:
-        vari.l_target = np.max([0, (pos[3,0]-pos[4,0])/vari.length])#l_sh-l_el
+        vari.l_target = np.min([1, np.max([0, (pos[3,0]-pos[4,0])/vari.length])])#l_sh-l_el
 
     #gui
     y_begin = int(img.shape[0]/2) - 5
-    x_begin = int(img.shape[1]/2)
-    cv2.rectangle(result, (vari.left, y_begin), (vari.left+10, y_begin+5), (255, 255, 255), thickness=-1)
-    cv2.rectangle(result, (vari.right, y_begin), (vari.left+10, y_begin+5), (255, 255, 255), thickness=-1)
-
-
-
+    x_begin = int(img.shape[1]/2 + img.shape[1]/2 * vari.r_target)
+    cv2.rectangle(result, (x_begin, y_begin), (x_begin+10, y_begin+5), (255, 255, 255), thickness=-1)#right
+    x_begin = int(img.shape[1]/2 * vari.l_target)
+    cv2.rectangle(result, (x_begin, y_begin), (x_begin+10, y_begin+5), (255, 255, 255), thickness=-1)#right
 
     return result
 
