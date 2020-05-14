@@ -37,10 +37,10 @@ def gui(img, pos):##
     result = np.zeros(img.shape, dtype=np.uint8)
     height = int(img.shape[0]/2)
     width = int(img.shape[1]/2)
-    result[int(height/2):int(height/2)+height, int(width/2):int(width/2)+width] = cv2.resize(img,(width, height))
+    result[height:height+height, int(width/2):int(width/2)+width] = cv2.resize(img,(width, height))
 
     #length
-    if not pos[0,0] == 0
+    if not pos[0,0] == 0:
         if not pos[3,0] == 0:
             vari.length = np.abs(pos[0,0]-pos[3,0])
 
